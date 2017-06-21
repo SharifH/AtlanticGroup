@@ -9,14 +9,48 @@ $(document).ready(function() {
       console.log(obj.timestamp);
       console.log(obj.image);
       console.log(obj.secret);
-      // for (var i in data){
-      //   $("#users").append("<li id='" + obj.secret + "' class='col-xs-12 col-sm-6 col-md-8'>"+obj.name+"</li>")
-      // }
-      data.forEach(function(){
-      // for (var i in data) {
-        $("#users").append("<li id='" + obj.secret + "' class='profiles'><img class='profile-picture' src='" + obj.image + "' ><h2 class='user_name'>" + obj.name + "</h2><br/><h2 class='timestamp'></h2></li>")
-      });
-
     }
-  });
+
+
+    data.forEach(function(e) {
+      // for (var i in data) {
+      $("#users").append("<li class='col-xs-12 col-sm-6 col-md-8 profile' id='" + e.secret + "' class='profiles'><img class='profile-picture' src='" + e.image + "' ><h1 class='user_name'>" + e.name + "</h1><p class='timestamp'>"+ getDateFormat(obj.timestamp)+"</p></li>")
+    });
+    $(".profile").click(switchColor);
+    function switchColor(){
+      $(".secret").attr('id', obj.secret);
+    }
 });
+
+function getDateFormat(date) {
+  var d = new Date(date),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
+  var date = new Date();
+  date.toLocaleDateString();
+
+  return [day, month, year].join('/');
+};
+});
+
+// $('#grayButton').click(switchGray);
+// $('#whiteButton').click(switchWhite);
+// $('#blueButton').click(switchBlue);
+// $('#yellowButton').click(switchYellow);
+//
+// function switchGray() {
+//   $('body').attr('class', 'gray');
+// }
+//
+// function switchWhite() {
+//   $('body').attr('class', 'white');
+// }
+//
+// function switchBlue() {
+//   $('body').attr('class', 'blue');
+// }
+//
+// function switchYellow() {
+//   $('body').attr('class', 'yellow');
+// }
